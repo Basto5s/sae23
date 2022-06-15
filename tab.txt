@@ -1,0 +1,3 @@
+$coldDrinks = $_POST['colddrinks']; 
+<td><?php foreach ($_POST['tab_inf'] as $cle => $valeur) echo "<tr><td>$cle</td>  <td>$valeur</td></tr>" ?></td>;
+<?php $Tab_inf = $_POST['tab_inf']; foreach ($Tab_inf as $tab_infs) echo "<tr><td> listes des valeurs </td>  <td>$tab_infs</td></tr>" ?></td>;
