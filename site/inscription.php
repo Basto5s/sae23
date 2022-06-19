@@ -30,30 +30,38 @@
 <body>
 
 <?php
-  $hostname = "localhost"; // nom du serveur ou se trouve votre base
-  $username = "cabanie";
-  $password = "root";
-  $database = "saee23";
 
-  $link = mysqli_connect($hostname, $username, $password, $database);
+session_start();
 
-  $stmt = "SELECT * FROM `admin` WHERE `login` = 'root' AND `mdp` = 'passroot'";
-  $result = mysqli_query($link,$stmt);
-  if (mysqli_num_rows($result) == 0) {
-    echo "Login incorrect";
-  }
-  else {
-    $row = mysqli_fetch_object($result);
-    $dbpasswd = $row->PassWord;
-    if ($dbpasswd == $pw) {
-      echo "Login et mot de passe OK";
+if (isset($_POST['un'], $_POST['pw'])) {
+    $un = $_POST['un'];
+    $pw = $_POST['pw'];
+
+    $db = new PDO('mysql:host=localhost;dbname=saee23', 'sae23', 'root');
+
+    $sql = "SELECT * FROM admin where login = ?";
+    $result = $db->prepare($sql);
+    $result->execute($un);
+
+    if ($result->rowCount() > 0) {
+        $data = $result->fetch();
+
+        if (password_verify($pw, $data['passroot'])) {
+            echo "Connexion effectuée";
+            $_SESSION['un'] = $un;
+        }
+    } else {
+        $hashedPassword = password_hash($pw, PASSWORD_DEFAULT);
+
+        $sql = "INSERT INTO admin (un, pw) VALUES (login, Azerty31*)";
+        $result = $db->prepare($sql);
+        $result->execute($un, $hashedPassword);
+
+        echo "Enregistrement effectué";
     }
-    else {
-      echo "Mot de passe incorrect";
-    }
-  }
+}
+
 ?>
-
 
 </body>
 </html>	
