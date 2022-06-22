@@ -69,10 +69,10 @@
 		<hr />
 		<p>Validation de la page HTML5 - CSS3</p>
 
-		<a href="https://validator.w3.org/nu/?doc=http%3A%2F%2Fcabanie.atwebpages.com%2Fsae14%2Findex.html" target="_blank"> 
+		<a> 
 			<img src="./html_logo.png" alt="HTML5 Valide !" />
 		</a>
-		<a href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fcabanie.atwebpages.com%2Fsae14%2FStyles%2Fstyle2RWD.css" target="_blank">
+		<a>
 			<img src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !" />
 		</a>
 	</aside>
